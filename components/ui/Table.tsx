@@ -17,7 +17,7 @@ export default function Table({ tasks, userId }: TableProps) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <div className="mb-4 rounded-full bg-muted/50 p-6">
-          <FaCheckCircle className="h-12 w-12 text-muted-foreground" />
+          <FaCheckCircle className="h-12 w-12 text-white" />
         </div>
         <h3 className="mb-2 text-lg font-medium text-muted-foreground">
           No tasks to display
