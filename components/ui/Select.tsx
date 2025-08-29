@@ -23,7 +23,7 @@ export default function Select({
       style={{ borderColor: "var(--color-accent)" }}
     >
       <legend
-        className="fieldset-legend pb-1"
+        className="fieldset-legend pb-1 w-full"
         style={{ color: "var(--color-accent)" }}
       >
         {label}
