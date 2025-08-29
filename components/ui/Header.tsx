@@ -61,8 +61,8 @@ export default function Header() {
 
   return (
     <header
-      className="w-full flex items-center justify-between h-12 mb-0 border-b-2"
-      style={{ borderColor: "var(--color-accent)" }}
+      className="w-full flex items-center justify-between"
+      style={{ borderColor: "var(--color-accent)", margin: "0px" }}
     >
       {/* Logo / título */}
       <h1

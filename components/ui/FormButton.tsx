@@ -41,7 +41,7 @@ export default function FormButton({
       }}
     >
       {isPending ? (
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 font-semibold">
           <AiOutlineLoading3Quarters className="animate-spin" />
           {pendingText}
         </div>
