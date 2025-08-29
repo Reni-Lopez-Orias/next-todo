@@ -36,7 +36,7 @@ export default function FormTask({ setOpenModal, userId, task }: FormProps) {
       }
       setLastState(state);
     }
-  }, [state, lastState]);
+  }, [state, lastState, setOpenModal]);
 
   return (
     <form action={formAction} className="w-full space-y-4">
