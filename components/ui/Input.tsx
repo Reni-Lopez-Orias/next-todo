@@ -2,7 +2,7 @@ interface InputProps {
   name: string;
   type: string;
   label: string;
-  error?: string;
+  error?: string[];
   classBox?: string;
   inputMode?:
     | "search"
@@ -17,9 +17,11 @@ interface InputProps {
   maxLength?: number;
   classInput?: string;
   placeholder?: string;
+  defaultValue?: string;
+  required?: boolean;
 }
 
-export const Input = ({
+export default function Input({
   name,
   type,
   label,
@@ -30,29 +32,46 @@ export const Input = ({
   maxLength,
   classInput,
   placeholder,
-}: InputProps) => {
+  defaultValue,
+  required,
+}: InputProps) {
   return (
-    <fieldset className={`fieldset w-full rounded-box ${classBox}`}>
-      <legend className="fieldset-legend pb-1">{label}</legend>
+    <fieldset
+      className={`fieldset w-full rounded-box ${classBox}`}
+      style={{ borderColor: "var(--color-accent)" }}
+    >
+      <legend
+        className="fieldset-legend pb-1"
+        style={{ color: "var(--color-accent)" }}
+      >
+        {label}
+      </legend>
       <input
         id={name}
         name={name}
         type={type}
+        required={required}
         inputMode={inputMode}
         maxLength={maxLength}
         minLength={minLength}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         className={`input input-bordered w-full ${classInput}`}
+        style={{
+          backgroundColor: "var(--color-card)",
+          color: "var(--color-foreground)",
+          borderColor: "var(--color-accent)",
+        }}
       />
-      {true && (
+      {error && (
         <p
           role="alert"
           style={{ marginTop: "-5px" }}
           className="text-sm text-red-500"
         >
-          {"Campo requerido"}
+          {error}
         </p>
       )}
     </fieldset>
   );
-};
+}

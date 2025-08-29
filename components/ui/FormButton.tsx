@@ -1,3 +1,5 @@
+"use client";
+
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface ButtonFormProps {
@@ -9,14 +11,14 @@ interface ButtonFormProps {
   type?: "button" | "submit" | "reset";
 }
 
-export const ButtonForm = ({
+export default function FormButton({
   isPending,
   pendingText = "Loading...",
   children,
-  className = "w-full rounded-md bg-black py-2.5 text-sm font-medium text-white transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50",
+  className = "w-full cursor-pointer rounded-md py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50",
   type = "submit",
   onClick,
-}: ButtonFormProps) => {
+}: ButtonFormProps) {
   return (
     <button
       type={type}
@@ -24,6 +26,19 @@ export const ButtonForm = ({
       aria-disabled={isPending}
       className={className}
       onClick={onClick}
+      style={{
+        backgroundColor: "var(--color-accent)",
+        color: "white",
+        borderColor: "var(--color-accent)",
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.backgroundColor = "var(--color-second-accent)";
+        // e.currentTarget.style.color = 'var(--color-background)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.backgroundColor = "var(--color-accent)";
+        // e.currentTarget.style.color = 'var(--color-card)';
+      }}
     >
       {isPending ? (
         <div className="flex items-center justify-center gap-2">
@@ -35,4 +50,4 @@ export const ButtonForm = ({
       )}
     </button>
   );
-};
+}

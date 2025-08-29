@@ -1,16 +1,8 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "next-themes";
+import { geistSans } from "@/components/ui/fonts";
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -23,11 +15,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={geistSans.className} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  
+                  if (!theme) {
+                    document.documentElement.setAttribute('data-theme', systemTheme);
+                    return;
+                  }
+                  
+                  if (theme === 'system') {
+                    document.documentElement.setAttribute('data-theme', systemTheme);
+                  } else {
+                    document.documentElement.setAttribute('data-theme', theme);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Toaster position="bottom-center" reverseOrder={false} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

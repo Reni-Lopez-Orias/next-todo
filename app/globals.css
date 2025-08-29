@@ -1,40 +1,124 @@
-@plugin "daisyui";
+/* globals.css */
 @import "tailwindcss";
-
-html {
-  scrollbar-gutter: auto !important;
-}
+@plugin "daisyui";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  --color-background: oklch(92% 0.004 286.32);
+  --color-foreground: black;
+  --color-accent: #616dd3;
+  --color-second-accent: #818cf8;
+  --color-card: white;
+  /* --transition-speed: 0.3s; */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --color-foreground: white;
+  --color-background: #0f172a;
+  --color-accent: #616dd3;
+  --color-second-accent: #818cf8;
+  --color-card: #1e293b;
+  /* --transition-speed: 0.3s; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    /* --foreground: #ededed; */
-  }
-  html{
-    background-color: black;
-  }
+* {
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
 }
 
-input,
-textarea,
-select {
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-accent);
+}
+
+.theme-toggle {
+  background: var(--color-accent);
+  color: var(--color-card);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.foreground {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.background {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  border: 2px solid var(--color-foreground);
+}
+
+.accent {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.visual-explanation {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.visual-box {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--color-card);
+}
+
+@media (max-width: 768px) {
+  .visual-explanation {
+    flex-direction: column;
+  }
+}
+
+.float-btn {
+  color: white;
+  background-color: var(--color-accent);
+  border: solid var(--color-accent) 1px;
+}
+
+/* Sobrescribir DaisyUI checkbox */
+input[type="checkbox"].checkbox {
+  background-color: var(--color-card) !important;
+  border-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+input[type="checkbox"].checkbox:checked {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: white !important;
+}
+
+input {
   font-size: 16px !important;
 }
