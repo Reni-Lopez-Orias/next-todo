@@ -1,6 +1,3 @@
-"use client";
-import React from "react";
-
 interface SelectProps {
   name: string;
   label: string;
@@ -20,10 +17,6 @@ export default function Select({
   classBox = "",
   disabled = false,
 }: SelectProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value, name);
-  };
-
   return (
     <fieldset
       className={`fieldset w-full rounded-box ${classBox}`}
@@ -39,7 +32,6 @@ export default function Select({
         name={name}
         defaultValue={value}
         disabled={disabled}
-        onChange={handleChange}
         className={`select select-bordered w-full ${classSelect}`}
         style={{
           backgroundColor: "var(--color-card)",

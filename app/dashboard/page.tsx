@@ -34,10 +34,7 @@ export default async function Page(props: {
 
   const statsTasks = await fetchStatsTask(userId);
   const totalPages = await fetchTasksPages(userId, query, status);
-  console.log(statsTasks);
-  console.log(totalPages);
   const tasks = await fetchTasks(userId, query, currentPage, status);
-  console.log("tasks: ", tasks);
 
   return (
     <div className="flex flex-col items-center min-h-[100dvh] w-full sm:max-w-4xl mx-auto gap-3">
