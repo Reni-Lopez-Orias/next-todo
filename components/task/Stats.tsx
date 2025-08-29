@@ -35,7 +35,7 @@ export default function Stats(statsTasks: IStatsProps) {
 
   return (
     <div
-      className="tabs gap-2 tabs-boxed p-1 rounded-lg"
+      className="tabs gap-2 tabs-boxed p-0 rounded-lg"
       style={{ backgroundColor: "var(--color-background)" }}
     >
       {/* All */}
@@ -45,7 +45,7 @@ export default function Stats(statsTasks: IStatsProps) {
           <button
             role="tab"
             onClick={() => handleClick("all")}
-            className="hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
+            className="px-1 hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
             aria-selected={isActive}
             style={makeButtonStyle(isActive)}
           >
@@ -93,7 +93,7 @@ export default function Stats(statsTasks: IStatsProps) {
           <button
             role="tab"
             onClick={() => handleClick("completed")}
-            className="hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
+            className="px-1 hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
             aria-selected={isActive}
             style={makeButtonStyle(isActive)}
           >
@@ -117,7 +117,7 @@ export default function Stats(statsTasks: IStatsProps) {
           <button
             role="tab"
             onClick={() => handleClick("priority")}
-            className="hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
+            className="px-1 hover:bg-[var(--color-card)] h-15 sm:h-9 tab flex-1 flex-col sm:flex-row transition-all duration-200 ease-in-out rounded-xl"
             aria-selected={isActive}
             style={makeButtonStyle(isActive)}
           >
