@@ -13,6 +13,8 @@ interface TableProps {
 }
 
 export default function Table({ tasks, userId }: TableProps) {
+  console.log(tasks);
+  
   if (tasks.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">

@@ -17,23 +17,18 @@ export default function PriorityBadge({
 }: PriorityBadgeProps) {
   const p = (priority || "").toString().toLowerCase();
 
-  const backgroundColor = completed ? "var(--color-accent)" : "transparent";
+  // Definimos los colores base de cada prioridad
+  const baseColor =
+    p === "high"
+      ? "var(--priority-high, #ef4444)"
+      : p === "mid" || p === "medium"
+      ? "var(--priority-mid, #f59e0b)"
+      : "var(--priority-low, #10b981)";
 
-  const borderColor = completed
-    ? "var(--color-accent)"
-    : p === "high"
-    ? "var(--priority-high, #ef4444)"
-    : p === "mid" || p === "medium"
-    ? "var(--priority-mid, #f59e0b)"
-    : "var(--priority-low, #10b981)";
-
-  const color = completed
-    ? "var(--color-card)"
-    : p === "high"
-    ? "var(--priority-high, #ef4444)"
-    : p === "mid" || p === "medium"
-    ? "var(--priority-mid, #f59e0b)"
-    : "var(--priority-low, #10b981)";
+  // Fondo transparente siempre, borde y texto cambian según completed
+  const backgroundColor = completed ? "rgba(0,0,0,0.05)" : "transparent";
+  const borderColor = baseColor;
+  const color = baseColor;
 
   return (
     <div
@@ -45,7 +40,7 @@ export default function PriorityBadge({
       }}
       aria-label={ariaLabel ?? `Priority: ${priority ?? "low"}`}
     >
-      {capitalizeFirst(priority) ?? "low"}
+      {capitalizeFirst(priority) ?? "Low"}
     </div>
   );
 }
